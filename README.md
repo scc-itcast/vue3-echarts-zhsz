@@ -33,6 +33,15 @@ Echarts binding for [Vue 3](https://github.com/vuejs/core)
    <vue-echarts :option="option" style="height: 500px" ref="chart" />
    ```
 
+   ```html
+   <vue-echarts
+     :animation="XLength"
+     :option="option"
+     style="height: 100%"
+     ref="chart"
+   />
+   ```
+
    prop `option` is required
 
    ```ts

@@ -1,6 +1,6 @@
 {
   "name": "vue3-echarts-zhsz",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Echarts binding for Vue 3",
   "main": "index.js",
   "module": "index.js",
