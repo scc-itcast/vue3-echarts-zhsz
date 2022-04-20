@@ -2,9 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/vue3-echarts-zhsz.svg)](https://www.npmjs.com/package/vue3-echarts-zhsz)
 
-Echarts binding for [Vue 3](https://github.com/vuejs/vue-next)
-
-## 基于 vue3-echarts 修改
+Echarts binding for [Vue 3](https://github.com/vuejs/core)
 
 ## How to use
 
@@ -99,3 +97,60 @@ All echarts events are supported. Doc can be found here: https://echarts.apache.
 ## LICENSE
 
 MIT
+
+## 基于 vue3-echarts 修改
+
+[vue3-echarts](https://github.com/CarterLi/vue3-echarts)
+
+- dispatchAction
+  - 修改源码 index.js
+
+* refreshChart 方法中新增
+
+```js
+if (this.animation) {
+  this.echarts_now = performance.now();
+  this.echarts_index = 0;
+  this.methodAnimation();
+}
+```
+
+- 新增一个方法
+
+```js
+methodAnimation() {
+  const echarts_now = performance.now()
+  if (echarts_now - this.echarts_now > 2000) {
+    console.log("animation", this.echarts_index)
+    this.echarts_now = echarts_now
+    this.chart.dispatchAction({
+      type: 'hideTip',
+      seriesIndex: 0,
+      dataIndex: this.echarts_index,
+    })
+    // 显示提示框
+    this.chart.dispatchAction({
+      type: 'showTip',
+      seriesIndex: 0,
+      dataIndex: this.echarts_index,
+    })
+    // 取消高亮指定的数据图形;
+    this.chart.dispatchAction({
+      type: 'downplay',
+      seriesIndex: 0,
+      dataIndex:
+        this.echarts_index == 0 ? this.animation - 1 : this.echarts_index - 1,
+    })
+    this.chart.dispatchAction({
+      type: 'highlight',
+      seriesIndex: 0,
+      dataIndex: this.echarts_index,
+    })
+    this.echarts_index++
+    if (this.echarts_index > this.animation - 1) {
+      this.echarts_index = 0
+    }
+  }
+  requestAnimationFrame(this.methodAnimation)
+}
+```

@@ -1,14 +1,14 @@
 {
   "name": "vue3-echarts-zhsz",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Echarts binding for Vue 3",
   "main": "index.js",
   "module": "index.js",
   "type": "module",
-  "repository": "git@github.com:CarterLi/vue3-echarts.git",
+  "repository": "git@github.com:scc-itcast/vue3-echarts-zhsz.git",
   "author": "scc",
   "bugs": {
-    "url": "git@github.com:CarterLi/vue3-echarts.git",
+    "url": "git@github.com:scc-itcast/vue3-echarts-zhsz.git",
     "email": "scc15599065860@163.com"
   },
   "license": "MIT",
