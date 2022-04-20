@@ -1,0 +1,29 @@
+{
+  "name": "vue3-echarts-zhsz",
+  "version": "1.0.1",
+  "description": "Echarts binding for Vue 3",
+  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
+  "repository": "git@github.com:CarterLi/vue3-echarts.git",
+  "author": "scc",
+  "bugs": {
+    "url": "git@github.com:CarterLi/vue3-echarts.git",
+    "email": "scc15599065860@163.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "echarts": "^5.2.2",
+    "resize-observer-polyfill": "^1.5.1",
+    "tslib": "^2.3.1",
+    "vue": "^3.2.26",
+    "vue3-component-base": "^0.0.9"
+  },
+  "scripts": {
+    "build": "tsc -d -p ."
+  },
+  "readme": "vue3-echarts-zhsz\n====================\n\n\n[![npm](https://img.shields.io/npm/v/vue3-echarts.svg)](https://www.npmjs.com/package/vue3-echarts)\n\n\nEcharts binding for [Vue 3](https://github.com/vuejs/vue-next)\n\n## How to use\n\n1. Install\n\n    ```shell\n    yarn add vue3-echarts\n    ```\n\n2. Register it in `components` of Vue options\n\n    ```js\n    import { VueEcharts } from 'vue3-echarts';\n\n    export default {\n        data,\n        methods,\n        ...\n        components: {\n            VueEcharts,\n        },\n    }\n    ```\n\n3. Use the component in template\n\n    ```html\n    <vue-echarts :option=\"option\" style=\"height: 500px\" ref=\"chart\" />\n    ```\n\n    prop `option` is required\n\n    ```ts\n    (this.$refs.chart as VueEcharts).refreshOption();\n    ```\n\n    Note: `vue-echarts` has no height by default. You need to specify it manually. DOM size change is detected automatically using `ResizeObserver`, no manual `resize` call needed.\n\n## Props\n\n### option\n\nType: `object`  \n\nEcharts option. Documents can be found here: <https://echarts.apache.org/en/option.html#title>. If `null`, `loading` animation will be shown\n\n### theme\n\nType: `string`\nDefault: `default`\n\nTheme used, should be pre-registered using [echarts.registerTheme](https://echarts.apache.org/en/api.html#echarts.registerTheme)\n\n### groupId\n\nType: `number`\n\nGroup name to be used in chart [connection](https://echarts.apache.org/en/api.html#echarts.connect)\n\n### loadingOption\n\nConfig used by [showLoading](https://echarts.apache.org/en/api.html#echartsInstance.showLoading).\n\nLoading animation will be shown automatically when `option` is null or an empty object.\n\n### initCfg\n\nOther configuration used by [echarts.init](https://echarts.apache.org/en/api.html#echarts.init)\n\n## Methods\n\n### refreshOption\n\nRefresh option using `setOption`. If `option` is null or an empty object, `loading` animation will be shown. See [loadingOption](#loadingOption)\n\n### refreshChart\n\nRecreate echarts instance\n\n### setOption\n\nAlias of [echartsInstance.setOption](https://echarts.apache.org/en/api.html#echartsInstance.setOption)\n\n### dispatchAction\n\nAlias of [echartsInstance.dispatchAction](https://echarts.apache.org/en/api.html#echartsInstance.dispatchAction)\n\n## events\n\nAll echarts events are supported. Doc can be found here: https://echarts.apache.org/en/api.html#events\n\n## LICENSE\n\nMIT\n"
+}
